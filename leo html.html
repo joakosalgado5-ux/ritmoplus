@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<HTML>
+	<HEAD>
+		<TITLE></TITLE>
+	</HEAD>
+	<BODY onload="();">
+		<SCRIPT type="text/javascript">
+			//Este codigo ha sido generado por el modulo psexport 20230904-w32 de PSeInt.
+			//Es posible que el codigo generado no sea completamente correcto. Si encuentra
+			//errores por favor reportelos en el foro (http://pseint.sourceforge.net).
+
+			// RITMO+ - Sistema de Seguimiento de Hábitos para Estudiantes
+			// Versión 1.0 - Desarrollado por Ritmo+ Company
+			function ritmoplus() {
+				// Variables principales
+				var nombre_usuario = new String();
+				var meta_estudio = new Number();
+				var meta_agua = new Number();
+				var meta_sueno = new Number();
+				var meta_actividad = new Number();
+				var actual_estudio = new Number();
+				var actual_agua = new Number();
+				var actual_sueno = new Number();
+				var actual_actividad = new Number();
+				var streak_estudio = new Number();
+				var streak_agua = new Number();
+				var streak_sueno = new Number();
+				var streak_actividad = new Number();
+				var opcion = new Number();
+				var i = new Number();
+				var dias_consecutivos = new Number();
+				var fecha = new String();
+				// Inicialización del sistema
+				document.write("=== RITMO+ - BIENVENIDO ===", '<BR/>');
+				document.write("Sistema de Seguimiento de Hábitos Saludables", '<BR/>');
+				document.write("", '<BR/>');
+				// Configuración inicial
+				document.write("Ingresa tu nombre: ", '<BR/>');
+				nombre_usuario = prompt();
+				document.write("Hola ", nombre_usuario, ", configura tus metas diarias:", '<BR/>');
+				document.write("Meta de estudio (horas): ", '<BR/>');
+				meta_estudio = Number(prompt());
+				while (meta_estudio<0 || meta_estudio>24) {
+					document.write("Meta inválida. Ingresa un valor entre 0 y 24: ", '<BR/>');
+					meta_estudio = Number(prompt());
+				}
+				document.write("Meta de agua (vasos de 250ml): ", '<BR/>');
+				meta_agua = Number(prompt());
+				while (meta_agua<0 || meta_agua>20) {
+					document.write("Meta inválida. Ingresa un valor entre 0 y 20: ", '<BR/>');
+					meta_agua = Number(prompt());
+				}
+				document.write("Meta de sueño (horas): ", '<BR/>');
+				meta_sueno = Number(prompt());
+				while (meta_sueno<0 || meta_sueno>24) {
+					document.write("Meta inválida. Ingresa un valor entre 0 y 24: ", '<BR/>');
+					meta_sueno = Number(prompt());
+				}
+				document.write("Meta de actividad física (minutos): ", '<BR/>');
+				meta_actividad = Number(prompt());
+				while (meta_actividad<0 || meta_actividad>300) {
+					document.write("Meta inválida. Ingresa un valor entre 0 y 300: ", '<BR/>');
+					meta_actividad = Number(prompt());
+				}
+				// Inicializar variables de seguimiento
+				actual_estudio = 0;
+				actual_agua = 0;
+				actual_sueno = 0;
+				actual_actividad = 0;
+				streak_estudio = 0;
+				streak_agua = 0;
+				streak_sueno = 0;
+				streak_actividad = 0;
+				// Menú principal
+				do {
+					document.write("", '<BR/>');
+					document.write("=== MENÚ PRINCIPAL ===", '<BR/>');
+					document.write("1. Registrar avance en hábitos", '<BR/>');
+					document.write("2. Ver progreso actual", '<BR/>');
+					document.write("3. Ver streaks", '<BR/>');
+					document.write("4. Reporte semanal", '<BR/>');
+					document.write("5. Salir", '<BR/>');
+					document.write("Selecciona una opción (1-5): ", '<BR/>');
+					opcion = Number(prompt());
+					switch (opcion) {
+					case 1:
+						document.write("¿Qué hábito deseas registrar?", '<BR/>');
+						document.write("1. Estudio", '<BR/>');
+						document.write("2. Agua", '<BR/>');
+						document.write("3. Sueño", '<BR/>');
+						document.write("4. Actividad física", '<BR/>');
+						opcion = Number(prompt());
+						switch (opcion) {
+						case 1:
+							document.write("Ingresa las horas de estudio realizadas: ", '<BR/>');
+							actual_estudio = Number(prompt());
+							if (actual_estudio>=meta_estudio) {
+								streak_estudio = streak_estudio+1;
+								document.write("¡Meta de estudio cumplida! Streak: ", streak_estudio, '<BR/>');
+							} else {
+								streak_estudio = 0;
+								document.write("Aún no alcanzas la meta. ¡Sigue intentando!", '<BR/>');
+							}
+							break;
+						case 2:
+							document.write("Ingresa la cantidad de vasos de agua tomados: ", '<BR/>');
+							actual_agua = Number(prompt());
+							if (actual_agua>=meta_agua) {
+								streak_agua = streak_agua+1;
+								document.write("¡Meta de agua cumplida! Streak: ", streak_agua, '<BR/>');
+							} else {
+								streak_agua = 0;
+								document.write("Aún no alcanzas la meta. ¡Sigue intentando!", '<BR/>');
+							}
+							break;
+						case 3:
+							document.write("Ingresa las horas de sueño: ", '<BR/>');
+							actual_sueno = Number(prompt());
+							if (actual_sueno>=meta_sueno) {
+								streak_sueno = streak_sueno+1;
+								document.write("¡Meta de sueño cumplida! Streak: ", streak_sueno, '<BR/>');
+							} else {
+								streak_sueno = 0;
+								document.write("Aún no alcanzas la meta. ¡Sigue intentando!", '<BR/>');
+							}
+							break;
+						case 4:
+							document.write("Ingresa los minutos de actividad física: ", '<BR/>');
+							actual_actividad = Number(prompt());
+							if (actual_actividad>=meta_actividad) {
+								streak_actividad = streak_actividad+1;
+								document.write("¡Meta de actividad física cumplida! Streak: ", streak_actividad, '<BR/>');
+							} else {
+								streak_actividad = 0;
+								document.write("Aún no alcanzas la meta. ¡Sigue intentando!", '<BR/>');
+							}
+							break;
+						default:
+							document.write("Opción inválida.", '<BR/>');
+						}
+						break;
+					case 2:
+						document.write("=== PROGRESO ACTUAL ===", '<BR/>');
+						document.write("Estudio: ", actual_estudio, "/", meta_estudio, " horas", '<BR/>');
+						document.write("Agua: ", actual_agua, "/", meta_agua, " vasos", '<BR/>');
+						document.write("Sueño: ", actual_sueno, "/", meta_sueno, " horas", '<BR/>');
+						document.write("Actividad física: ", actual_actividad, "/", meta_actividad, " minutos", '<BR/>');
+						break;
+					case 3:
+						document.write("=== STREAKS ACTUALES ===", '<BR/>');
+						document.write("Estudio: ", streak_estudio, " días", '<BR/>');
+						document.write("Agua: ", streak_agua, " días", '<BR/>');
+						document.write("Sueño: ", streak_sueno, " días", '<BR/>');
+						document.write("Actividad física: ", streak_actividad, " días", '<BR/>');
+						break;
+					case 4:
+						document.write("=== REPORTE SEMANAL ===", '<BR/>');
+						document.write("Progreso promedio esta semana:", '<BR/>');
+						document.write("Estudio: ", (actual_estudio/meta_estudio)*100, "%", '<BR/>');
+						document.write("Agua: ", (actual_agua/meta_agua)*100, "%", '<BR/>');
+						document.write("Sueño: ", (actual_sueno/meta_sueno)*100, "%", '<BR/>');
+						document.write("Actividad física: ", (actual_actividad/meta_actividad)*100, "%", '<BR/>');
+						break;
+					case 5:
+						document.write("¡Hasta pronto, ", nombre_usuario, "! Sigue con tus hábitos.", '<BR/>');
+						break;
+					default:
+						document.write("Opción inválida. Por favor, elige una opción del 1 al 5.", '<BR/>');
+					}
+				} while (opcion!=5);
+			}
+			
+		</SCRIPT>
+	</BODY>
+</HTML>
